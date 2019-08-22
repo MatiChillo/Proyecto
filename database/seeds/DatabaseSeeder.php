@@ -16,26 +16,22 @@ class DatabaseSeeder extends Seeder
         $products = factory(App\Product::class)->times(10)->create();
         $categories = factory(App\Category::class)->times(10)->create();
         $shopping_carts = factory(App\shoppingCart::class)->times(10)->create();
-        $shopping_lists= factory(App\shoppingList::class)->times(10)->create();
+        $product_shopping_cart = factory(App\product_shoppingCart::class)->times(10)->create();
         // $this->call(UsersTableSeeder::class);
 
         foreach ($products as $oneProduct) {
   				$oneProduct->category()->associate($categories->random(1)->first()->id);
-          //$oneProduct->shopping_lists()-saveMany($shopping_lists->random(1));
-  				$oneProduct->save();
+          $oneProduct->save();
+          $oneProduct->shoppingCarts()->sync($shopping_carts->random(2));
+
         }
 
         foreach ($shopping_carts as $oneShoppingCart) {
           $oneShoppingCart->customer()->associate($customers->random(1)->first()->id);
-          //$oneShoppingCart->shopping_lists()-saveMany($shopping_lists->random(1));
           $oneShoppingCart->save();
-        }
-
-        foreach ($shopping_lists as $oneShoppingList) {
-          $oneShoppingList->products()->saveMany($products->random(1));
-          $oneShoppingList->shoppingCarts()->saveMany($shopping_carts->random(1));
-          $oneShoppingList->save();
-        }
+          $oneShoppingCart->products()->sync($products->random(2));
 
         }
+
+    }
 }

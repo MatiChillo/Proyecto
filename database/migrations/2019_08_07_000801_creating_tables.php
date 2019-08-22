@@ -50,7 +50,7 @@ class CreatingTables extends Migration{
         $table->timestamps();
     });
 
-     Schema::create('shopping_lists', function (Blueprint $table) {
+     Schema::create('product_shopping_cart', function (Blueprint $table) {
         $table->bigIncrements('id');
 				$table->unsignedBigInteger('shopping_cart_id')->nullable();
     		$table->foreign('shopping_cart_id')->references('id')->on('shopping_carts');
@@ -69,7 +69,7 @@ class CreatingTables extends Migration{
     public function down(){
 
 
-    Schema::dropIfExists('shopping_lists');
+    Schema::dropIfExists('product_shopping_cart');
 
     Schema::dropIfExists('shopping_carts');
 

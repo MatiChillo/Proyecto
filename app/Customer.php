@@ -11,7 +11,7 @@ class Customer extends Model
 
     // Se aclara la relación (AGREGUE las y cambie en nombre del modelo que estaba mal Mati)
     public function shoppingCarts(){
-      return $this->hasMany("App\shoppingCart", "customer_id");
+      return $this->hasMany(shoppingCart::class);
   }
 
 }

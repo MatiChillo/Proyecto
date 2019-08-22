@@ -11,13 +11,15 @@ class Product extends Model
 
     // Se aclara la relación con category
     public function category(){
-      return $this->belongsTo("App\Category", "category_id");
+      return $this->belongsTo(Category::class);
     }
 
     // Se aclara la relación con shoppingList (AGREGUE la s tambien Mati)
-    //public function shoppingLists(){
-    //  return $this->belongsToMany("App\shoppingList", "shopping_lists", "product_id", "shopping_list_id");
-  //  }
+    public function shoppingCarts(){
+      return $this->belongsToMany(shoppingCart::class)
+      //->withPivot($this->quantity, $this->total_purchase)
+      ->withTimestamps();
+    }
 
 
 

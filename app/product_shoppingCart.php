@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class product_shoppingCart extends Pivot
+class product_shoppingCart extends Model
 {
   //La clase se llama product_shopping_cart (AGREGUE Mati)
   protected $table = "product_shopping_cart";

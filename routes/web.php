@@ -26,21 +26,38 @@ Route::get("/productos", function() {
 return view('productos');
 });
 
+//Ruta a la pagina de productos
+Route::get("/login", function() {
+return view('login');
+});
+
+//Ruta a la pagina de productos
+Route::get("/registro", function() {
+return view('registro');
+});
+
 //Ruta a la pagina de preguntas frecuentes
 Route::get("/faq", function() {
   return view('faq');
-
 });
 
-
+//Ruta a la pagina de quien soy
+Route::get("/quiensoy", function() {
+  return view('quiensoy');
+});
 
 
 //Ruta a la pagina de perfil usuario
-Route::get("/", function() {
-
+Route::get("/perfil_usuario", function() {
+return view('perfil_usuario');
 });
 
-//Ruta a la pagina de detalle producto
-Route::get("/", function() {
+//Ruta a la pagina de crear producto
+Route::get("/create_product", "ProductsController@create");
 
-});
+//Ruta a la pagina de producto
+Route::get("/products", "ProductsController@list");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

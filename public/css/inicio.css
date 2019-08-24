@@ -1,43 +1,7 @@
 
-@import "https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans|Open+Sans|Ubuntu&display=swap";
-
-* {
-  box-sizing: border-box;
-  font-family: 'Open Sans', 'Montserrat', 'Noto Sans', 'Ubuntu', sans-serif;
-}
-
-body {
-  background-image: url("../img/rectangular1.jpg");
-  display: flex;
-}
-
-.container, .contenedor{
-  margin:0 auto;
-  display: flex;
-  max-width: 1200px;
-}
-
 .container-carousel {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  /* width: 100%; */
   margin-top: 30px;
-}
-
-.cabecera {
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction:row;
-  flex-wrap: wrap;
-  margin-top: 15px;
-  color: RGB(46, 139, 87);
-}
-
-h1 {
-  font-size: 15px;
-  color: RGB(46, 139, 87);
 }
 
 .products-container {
@@ -46,32 +10,8 @@ h1 {
   margin: auto;
   padding: 0;
   flex-direction: column;
-  background-image: url("img/rectangular1.jpg");
 }
 
-.unProducto img {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-}
-
-.unProducto h4 {
-  margin-left: 10px;
-  margin-top: 15px;
-  color: RGB(46, 139, 87);
-  display: flex;
-  font-size: 18px;
-}
-
-.unProducto p {
-  color: RGB(46, 139, 87);
-  margin-left: 10px;
-  display: flex;
-  margin-bottom: 25px;
-  font-size: 16px;
-}
 
 .products-container {
   display: flex;
@@ -93,7 +33,7 @@ h1 {
 }
 
 
-@media (min-width:768px) {
+/* @media (min-width:768px) {
   .container{max-width: 720px;
   }
 
@@ -131,4 +71,4 @@ h1 {
     justify-content: space-around;
     align-items: center;
     align-self: center;
-  }
+  } */

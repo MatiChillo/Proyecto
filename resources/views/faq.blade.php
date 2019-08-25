@@ -1,4 +1,3 @@
-{{-- Para usar la plantilla base.blade.php  --}}
 @extends('base')
 
 @section('customStyles')
@@ -8,7 +7,7 @@
 @section('pageTitle', 'Preguntas Frecuentes')
 
 @section('mainContent')
-<div class="panel-group" id="accordion1">
+{{-- <div class="panel-group" id="accordion1"> --}}
     <h3>Preguntas Frecuentes</h3>
             <div class="panel-heading">
           <h4 class="panel-title" > <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">¿Cómo hago para comprar on line?</a> </h4>
@@ -93,8 +92,5 @@
             <div class="panel-body"> <p>Tenés hasta 15 días consecutivos, a partir de la fecha de recepción de tu compra para solicitar un cambio, independientemente de si el producto se encuentra con algún defecto, o en condiciones óptimas.</p></div>
           </div>
         </div>
-        <br>
-{{-- <div class="unaPregunta">
-    <h5>Si no encontraste la respuesta a tu pregunta en esta sección, envía un mail a  <a href="#">  lienis@gmail.com  </a>    ¡Estamos para ayudarte!</h5>
-</div> --}}
+
 @endsection

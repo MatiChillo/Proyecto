@@ -1,20 +1,39 @@
 
-<div class="container-logo">
-  <img class="logo" src="/img/logo-lienis.png" alt="Logo Lienis">
-  <h3>La vie est belle, vivre al style Lienis </h3>
+{{-- <div class="container-logo" > --}}
+  <img class="logo" src="/img/logo-lienis.png" alt="Logo Lienis" >
+  <h3 class="slogan">La vie est belle, vivre al style Lienis </h3>
 </div>
 
-<style media="screen">
+
+<style>
+
+/* .container-logo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+} */
+
 .logo {
-border-radius: 100%;
-display: flex;
-width:30%;
-height:30%;
-justify-content: center;
-padding: 5px;
+  display: flex;
+  align-items: center;
+  width: 25%;
+  border-radius: 100%;
+  border: solid 1px rgb(114,153,64);
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px auto 30px;
+  padding: 12px;
+  background-color: #FBEFF5;
 }
 
 .slogan {
-font-size: 13px;
+  flex-direction: column;
+  align-self: center;
+font-size: 18px;
+display: flex;
+align-items: center;
 }
+
+
+
 </style>

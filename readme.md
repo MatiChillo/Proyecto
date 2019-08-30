@@ -1,13 +1,13 @@
-<p align="center">Lienis Designs</p>
-En este repositorio se encuentra el eMarket migrado a Laravel realizado para el curso: Desarrollo Web Full Stack llevado a cabo en el período abril-agosto de 2019. Los colaboradores del proyecto son:
+Lienis Designs
 
+E-commerce de bisutería desarrollado en el marco del curso desarollo Web Full Stack en Digital House por:
+- Matías Chillo
 - Maribel Claros
-- Matias Chillo
 - Josmary Pazo
-- Analia Rossotti
+- Analía Rossoti
 
 
-____________________________________________________________________________________________________________________________________
+
 
 
 

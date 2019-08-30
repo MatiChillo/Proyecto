@@ -1,89 +1,73 @@
-
+@php
+  use App\Category;
+  $categories = Category::all();
+@endphp
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <link href="css/navbar.css" rel="stylesheet">
-    <!-- Scripts -->
 
-    <div id="app">
+    <div class="container-nav">
       <div class="navbar">
-      <nav class="navbar-expand-lg">
-
-        <span><i class="fa fa-search"></i></span>
-        <input class="inputs" type="search" id="search" placeholder="Buscar..." />
-        </a>  </li>
-        {{-- <li class="nav-item">
-        <a href="#" class="carro"><i class="fas fa-shopping-cart"></i></a>
-        </li> --}}
-
+      <nav class="navbar-expand-md">
     <ul class="navbar-nav">
+      <li class="nav-item">
+      <form class="" action="/products/search" method="get">
+        @csrf
+        <span><i class="fa fa-search"></i></span>
+        <input class="inputs" type="search" id="search" name="buscador" placeholder="Buscar..." />
+      </form>
+
+          </li>
     <li class="nav-item">
-      <a class="nav-link" href="index">Inicio</a>
+      <a class="nav-link" href="/">Inicio</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="quiensoy">¿Quién soy?</a>
+      <a class="nav-link" href="/quiensoy">¿Quién soy?</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="faq">Preguntas frecuentes</a>
+      <a class="nav-link" href="/faq">Preguntas frecuentes</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="/products" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Productos
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="/products">Collares</a>
-        <a class="dropdown-item" href="/products">Minibags</a>
-        <a class="dropdown-item" href="/products">Para ellos</a>
-        <a class="dropdown-item" href="/products">Pulseras</a>
-        <a class="dropdown-item" href="/products">Zarcillos</a>
+      <a class="dropdown-item" href="/products">Todos</a>
+        @foreach ($categories as $category)
+            <a class="dropdown-item" href="/products/category/{{ $category->id }}">{{ $category->name }}</a>
+        @endforeach
+      @auth
+        @if (Auth::user()->isAdmin())
+        <a class="dropdown-item" href="/products/create">Crear producto</a>
+        @endif
+      @endauth
       </div>
     </li>
-      <ul class="nav-item">
+
+      <ul class="navbar-nav">
         <!-- Authentication Links -->
         @guest
-            <li class="nav-item" style="margin-right:30px;">
-              <a class="nav-linkk" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            @if (Route::has('register'))
-                <li class="nav-item" style="margin-right:30px;">
-                  <a class="nav-linkk" href="{{ route('register') }}">{{ __('Registro') }}</a>
-                </li>
-            @endif
+          <li class="nav-item"><a class="nav-link" href="/register">Registro</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
         @else
-      <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }} <span class="caret"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropNavBar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ Auth::user()->fullName }} <img src="/storage/img/{{ Auth::user()->avatar }}" width="40" style="border-radius: 50%; background-color: #ffffff; padding: 5px;">
+
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <div class="dropdown-menu" aria-labelledby="dropNavBar">
+              <a class="dropdown-item" href="/perfil_usuario">Mi perfil</a>
+              <form action="/logout" method="post">
                 @csrf
-            </form>
-              </div>
-                  </li>
-              @endguest
-
-              @auth
-              </nav>
-              <nav class=" navbar-expand-lg" style="align-items: flex-end;">
-              <li class="nav-item" >
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropNavBar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img src="/img/img_1353.png" width="40" style="border-radius: 50%; background-color: #ffffff; padding: 3px;">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropNavBar">
-                      <a class="dropdown-item" href="/perfil_usuario">Mi perfil</a>
-                      <a class="dropdown-item" href=" ">Salir</a>
-                  </nav>
-              @endauth
-
-          </ul>
-      </div>
-        </nav>
+                <button type="submit" class="dropdown-item">Salir</button>
+              </form>
+            </div>
+          </li>
+        @endguest
+      </ul>
     </div>
+  </div>
+</nav>
     <script src="{{ asset('js/app.js') }}" defer></script>

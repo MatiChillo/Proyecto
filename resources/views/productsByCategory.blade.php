@@ -1,15 +1,17 @@
-@if (session('adminError'))
-	<div class="alert alert-danger">
-		{{ session('adminError') }}
-	</div>
-@endif
-
 @extends('base')
+
+@section('customStyles')
+  <link rel="stylesheet" href="/css/registro.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  @endsection
+
 
 @section('pageTitle', 'Productos')
 
 @section('mainContent')
   <div class="container">
+    <h3>{{ $category->name }}</h3>
     @foreach ($products as $product)
       <div class="col-xs-12 col-md-6 col-lg-4" style="padding:5px">
         <div class="unProducto" style="background-color: rgba(234, 250, 241, 0.23); border-radius: 15px;">
@@ -25,11 +27,7 @@
     @endforeach
   </div>
 
-<div class="links" style="color: RGB(46, 139, 87)">
-	{{ $products->links() }}
-</div>
+  {{-- <a href="/products/create" class="btn btn-primary">Crear producto</a> --}}
+
 
 @endsection
-
- {{-- { color: RGB(46, 139, 87);
-background-color: rgba(234, 250, 241, 0.43);   } --}}
